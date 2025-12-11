@@ -37,4 +37,15 @@ O aplicativo permite escolher cores pelo espectro HSV, editar valores ARGB e cop
 
 ## Como executar
 
-1. Clonar o repositório:
+1. Clonar o repositório: <br>
+```
+git clone https://github.com/samuel0021/ColorHelper.git
+```
+2. Abrir a solução no **Visual Studio 2022**.  
+3. Selecionar a configuração desejada (Debug/Release) e executar com `F5`.
+
+## Próximas melhorias (ideias)
+
+- Refatorar para uma arquitetura mais desacoplada (separando UI e lógica de domínio).  
+- Adicionar prévias de paleta e histórico de cores.  
+- Implementar suporte a outros espaços de cor (HSL, CMYK) e exportação de paletas.
