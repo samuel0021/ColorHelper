@@ -5,9 +5,9 @@ O aplicativo permite escolher cores pelo espectro HSV, editar valores ARGB e cop
 
 ## Download
 
-Baixe a versão compilada para Windows em:
+Baixe a última versão clicando aqui:
 
-➡️ [ColorHelper-1.0.0-win-x64.zip](https://github.com/seu-usuario/ColorHelper/releases/latest)
+➡️ [ColorHelper-1.0.0-win-x64.zip](https://github.com/samuel0021/ColorHelper/releases/download/v1.0.0/ColorHelper-1.0.0-win-x64.zip)
 
 
 ## Funcionalidades
