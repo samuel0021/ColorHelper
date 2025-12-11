@@ -1,0 +1,67 @@
+﻿## Arquivos temporários do Visual Studio / usuário
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## Pastas do VS
+.vs/
+
+## Resultados de build
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+## Build do .NET
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## Configurações locais / secretas
+appsettings.Development.json
+appsettings.Local.json
+
+## Pacotes
+packages/
+*.nupkg
+*.snupkg
+!packages/build/
+!packages/repositories.config
+
+## Ferramentas de publicação / ClickOnce
+publish/
+*.[Pp]ublish.xml
+*.pubxml
+*.publishproj
+
+## Testes
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+## ReSharper / Rider
+_ReSharper*/
+*.[Rr]e[Ss]harper
+.idea/
+
+## Arquivos de backup / temporários
+*.tmp
+*.temp
+*.bak
+*~ 
+*.swp
+
+## Outros
+[Dd]ebug*/
+[Rr]elease*/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+
+# Logs
+*.log
+
+# Arquivos gerados
+Generated_Code/
