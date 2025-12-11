@@ -3,12 +3,14 @@
 Color Helper é um color picker desktop feito em C# WinForms.  
 O aplicativo permite escolher cores pelo espectro HSV, editar valores ARGB e copiar o código HEX, além de ter um modo conta‑gotas para capturar a cor de qualquer pixel da tela.
 
-## Download
+## Como executar
 
-Baixe a última versão clicando aqui:
+1. Baixe a última versão aqui: <br>
 
-➡️ [ColorHelper-1.0.0-win-x64.zip](https://github.com/samuel0021/ColorHelper/releases/download/v1.0.0/ColorHelper-1.0.0-win-x64.zip)
+➡️ [ColorHelper v1.0.0](https://github.com/samuel0021/ColorHelper/releases/download/v1.0.0/ColorHelper-1.0.0-win-x64.zip)
 
+2. Extraia os arquivos da pasta.  
+3. Execute o arquivo ColorHelper.exe.
 
 ## Funcionalidades
 
@@ -41,15 +43,6 @@ Baixe a última versão clicando aqui:
   - Dos eventos de mouse do espectro de cores e do modo conta‑gotas.  
   - Da sincronização entre ARGB, HEX e `TrackBar` de opacidade.  
   - De pequenos utilitários como copiar HEX para o clipboard.
-
-## Como executar
-
-1. Clonar o repositório: <br>
-```
-git clone https://github.com/samuel0021/ColorHelper.git
-```
-2. Abrir a solução no **Visual Studio 2022**.  
-3. Selecionar a configuração desejada (Debug/Release) e executar com `F5`.
 
 ## Próximas melhorias (ideias)
 
