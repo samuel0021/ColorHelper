@@ -47,6 +47,7 @@
             this.txtColor = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnPickScreenColor = new System.Windows.Forms.Button();
+            this.txtOpacity = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pctColorSpectrum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trkAlpha)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -147,12 +148,12 @@
             // trkAlpha
             // 
             this.trkAlpha.Location = new System.Drawing.Point(264, 242);
-            this.trkAlpha.Maximum = 255;
+            this.trkAlpha.Maximum = 100;
             this.trkAlpha.Name = "trkAlpha";
             this.trkAlpha.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.trkAlpha.Size = new System.Drawing.Size(222, 45);
             this.trkAlpha.TabIndex = 17;
-            this.trkAlpha.Value = 255;
+            this.trkAlpha.Value = 100;
             this.trkAlpha.Scroll += new System.EventHandler(this.trkAlpha_Scroll);
             // 
             // groupBox1
@@ -213,7 +214,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(261, 215);
+            this.label5.Location = new System.Drawing.Point(298, 216);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(43, 13);
             this.label5.TabIndex = 20;
@@ -231,11 +232,20 @@
             this.btnPickScreenColor.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnPickScreenColor_MouseDown);
             this.btnPickScreenColor.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnPickScreenColor_MouseUp);
             // 
+            // txtOpacity
+            // 
+            this.txtOpacity.Location = new System.Drawing.Point(347, 213);
+            this.txtOpacity.Name = "txtOpacity";
+            this.txtOpacity.Size = new System.Drawing.Size(100, 20);
+            this.txtOpacity.TabIndex = 22;
+            this.txtOpacity.TextChanged += new System.EventHandler(this.txtOpacity_TextChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(502, 496);
+            this.ClientSize = new System.Drawing.Size(494, 496);
+            this.Controls.Add(this.txtOpacity);
             this.Controls.Add(this.btnPickScreenColor);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtColor);
@@ -284,6 +294,7 @@
         private System.Windows.Forms.TextBox txtColor;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnPickScreenColor;
+        private System.Windows.Forms.TextBox txtOpacity;
     }
 }
 

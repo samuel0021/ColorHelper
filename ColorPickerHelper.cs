@@ -120,23 +120,28 @@ namespace ColorHelper
         }
 
         public void ApplyColorToControls(
-            Color color,
-            Label lblPreview,
-            TextBox txtColor,
-            TextBox txtAlpha,
-            TextBox txtRed,
-            TextBox txtGreen,
-            TextBox txtBlue)
+        Color color,
+        Label lblPreview,
+        TextBox txtColor,
+        TextBox txtAlpha,
+        TextBox txtRed,
+        TextBox txtGreen,
+        TextBox txtBlue)
         {
             lblPreview.BackColor = color;
 
             txtColor.Text = $"#{color.A:X2}{color.R:X2}{color.G:X2}{color.B:X2}";
-            txtAlpha.Text = color.A.ToString();
+
+            var conv = new Converters();
+            int percent = conv.AlphaToPercentage(color.A);
+
+            txtAlpha.Text = color.A.ToString();  // 0–255
             txtRed.Text = color.R.ToString();
             txtGreen.Text = color.G.ToString();
             txtBlue.Text = color.B.ToString();
         }
 
+        #region Generate Spectrum
         public Bitmap GerarGradiente(int largura, int altura)
         {
             var bmp = new Bitmap(largura, altura);
@@ -189,5 +194,6 @@ namespace ColorHelper
                 (int)(g * 255),
                 (int)(b * 255));
         }
+        #endregion
     }
 }

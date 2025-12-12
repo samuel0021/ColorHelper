@@ -17,6 +17,7 @@ namespace ColorHelper
     public partial class Form1 : Form
     {
         private readonly ColorPickerHelper _picker = new ColorPickerHelper();
+        private readonly Converters _converters = new Converters();
 
         bool _pickingScreen = false;
         bool _pickingMouseDown = false;
@@ -30,6 +31,13 @@ namespace ColorHelper
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            trkAlpha.Minimum = 0;
+            trkAlpha.Maximum = 100;
+            trkAlpha.Value = 100;
+
+            txtOpacity.Text = "100%";
+            txtAlpha.Text = "255";
+
             txtColor.Text = "#";
 
             pctColorSpectrum.Image = _picker.GerarGradiente(pctColorSpectrum.Width, pctColorSpectrum.Height);
@@ -43,7 +51,7 @@ namespace ColorHelper
         {
             using (Bitmap pixelContainer = new Bitmap(1, 1))
             {
-                using(Graphics graphics = Graphics.FromImage(pixelContainer))
+                using (Graphics graphics = Graphics.FromImage(pixelContainer))
                 {
                     graphics.CopyFromScreen(location, Point.Empty, pixelContainer.Size);
                 }
@@ -66,6 +74,8 @@ namespace ColorHelper
                 }
             }
         }
+
+        #region Mouse Events
         private void btnPickScreenColor_MouseDown(object sender, MouseEventArgs e)
         {
             buttonPressed = true;
@@ -77,7 +87,6 @@ namespace ColorHelper
             buttonPressed = false;
             Cursor = Cursors.Default;
         }
-
 
         // ==============================================================
 
@@ -114,18 +123,20 @@ namespace ColorHelper
                 MessageBox.Show($"HEX: {txtColor.Text}", "HEX COPIED", MessageBoxButtons.OK);
             }
         }
+        #endregion
 
         private void trkAlpha_Scroll(object sender, EventArgs e)
         {
-            int alpha = trkAlpha.Value;
+            int percent = trkAlpha.Value;                    // 0–100
+            int alpha255 = _converters.PercentageToAlpha(percent); // 0–255
 
             Color baseColor = lblSmallScreen.BackColor;
-
-            Color newColor = Color.FromArgb(alpha, baseColor.R, baseColor.G, baseColor.B);
+            Color newColor = Color.FromArgb(alpha255, baseColor.R, baseColor.G, baseColor.B);
 
             lblSmallScreen.BackColor = newColor;
 
-            txtAlpha.Text = alpha.ToString();
+            txtAlpha.Text = alpha255.ToString();
+            txtOpacity.Text = percent + "%";
         }
 
         private void txtColor_TextChanged(object sender, EventArgs e)
@@ -150,11 +161,15 @@ namespace ColorHelper
 
                 lblSmallScreen.BackColor = c;
 
-                txtAlpha.Text = c.A.ToString();
+                int percent = _converters.AlphaToPercentage(c.A);
+
+                txtAlpha.Text = c.A.ToString();   // 0–100
                 txtRed.Text = c.R.ToString();
                 txtGreen.Text = c.G.ToString();
                 txtBlue.Text = c.B.ToString();
-                trkAlpha.Value = c.A;
+
+                trkAlpha.Value = percent;
+                txtOpacity.Text = percent + "%";
             }
             catch
             {
@@ -162,8 +177,16 @@ namespace ColorHelper
             }
         }
 
+        #region ARGB TextChanged
         private void txtAlpha_TextChanged(object sender, EventArgs e)
         {
+            // permite vazio ou um número parcial enquanto digita
+            if (string.IsNullOrWhiteSpace(txtAlpha.Text))
+                return;
+
+            if (!int.TryParse(txtAlpha.Text, out _))
+                return;
+
             UpdateColorFromChannels();
         }
 
@@ -181,29 +204,36 @@ namespace ColorHelper
         {
             UpdateColorFromChannels();
         }
+        #endregion
 
         private void UpdateColorFromChannels()
         {
-            if (!int.TryParse(txtAlpha.Text, out int a)) a = 255;
+            if (!int.TryParse(txtAlpha.Text, out int a255)) a255 = 255;
             if (!int.TryParse(txtRed.Text, out int r)) r = 0;
             if (!int.TryParse(txtGreen.Text, out int g)) g = 0;
             if (!int.TryParse(txtBlue.Text, out int b)) b = 0;
 
-            a = Math.Max(0, Math.Min(255, a));
+            a255 = Math.Max(0, Math.Min(255, a255));
             r = Math.Max(0, Math.Min(255, r));
             g = Math.Max(0, Math.Min(255, g));
             b = Math.Max(0, Math.Min(255, b));
 
-            // sincroniza trackbar de alpha
-            trkAlpha.Value = a;
+            int percent = _converters.AlphaToPercentage(a255); // 0–100
 
-            Color c = Color.FromArgb(a, r, g, b);
+            trkAlpha.Value = percent;
+            txtOpacity.Text = percent + "%";
+
+            Color c = Color.FromArgb(a255, r, g, b);
             lblSmallScreen.BackColor = c;
 
-            // atualiza HEX
-            txtColor.TextChanged -= txtColor_TextChanged; // evita loop
-            txtColor.Text = $"#{c.A:X2}{c.R:X2}{c.G:X2}{c.B:X2}"; // #AARRGGBB
+            txtColor.TextChanged -= txtColor_TextChanged;
+            txtColor.Text = $"#{c.A:X2}{c.R:X2}{c.G:X2}{c.B:X2}";
             txtColor.TextChanged += txtColor_TextChanged;
+
+            // garante que o valor visível esteja clampado, sem recursão
+            txtAlpha.TextChanged -= txtAlpha_TextChanged;
+            txtAlpha.Text = a255.ToString();
+            txtAlpha.TextChanged += txtAlpha_TextChanged;
         }
 
         private void pctColorSpectrum_Click(object sender, EventArgs e)
@@ -251,6 +281,25 @@ namespace ColorHelper
         {
             if (e.KeyCode == Keys.Back && txtColor.SelectionStart <= 1)
                 e.SuppressKeyPress = true;
+        }
+
+        private void txtOpacity_TextChanged(object sender, EventArgs e)
+        {
+            string text = txtOpacity.Text.Replace("%", "").Trim();
+            if (!int.TryParse(text, out int percent))
+                return;
+
+            percent = Math.Max(0, Math.Min(100, percent));
+            trkAlpha.Value = percent;
+
+            int a255 = _converters.PercentageToAlpha(percent);
+            Color baseColor = lblSmallScreen.BackColor;
+            lblSmallScreen.BackColor = Color.FromArgb(a255, baseColor.R, baseColor.G, baseColor.B);
+
+            txtAlpha.Text = a255.ToString();   // mostra 0–255
+            txtOpacity.TextChanged -= txtOpacity_TextChanged;
+            txtOpacity.Text = percent + "%";
+            txtOpacity.TextChanged += txtOpacity_TextChanged;
         }
     }
 }
