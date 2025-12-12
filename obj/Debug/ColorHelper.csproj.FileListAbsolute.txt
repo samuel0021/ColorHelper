@@ -1,11 +1,11 @@
+C:\Users\T-GAMER\Documents\PROG\ColorHelper\bin\Debug\ColorHelper.exe.config
+C:\Users\T-GAMER\Documents\PROG\ColorHelper\bin\Debug\ColorHelper.exe
+C:\Users\T-GAMER\Documents\PROG\ColorHelper\bin\Debug\ColorHelper.pdb
 C:\Users\T-GAMER\Documents\PROG\ColorHelper\obj\Debug\ColorHelper.csproj.AssemblyReference.cache
 C:\Users\T-GAMER\Documents\PROG\ColorHelper\obj\Debug\ColorHelper.Form1.resources
 C:\Users\T-GAMER\Documents\PROG\ColorHelper\obj\Debug\ColorHelper.Properties.Resources.resources
 C:\Users\T-GAMER\Documents\PROG\ColorHelper\obj\Debug\ColorHelper.csproj.GenerateResource.cache
 C:\Users\T-GAMER\Documents\PROG\ColorHelper\obj\Debug\ColorHelper.csproj.CoreCompileInputs.cache
-C:\Users\T-GAMER\Documents\PROG\ColorHelper\bin\Debug\ColorHelper.exe.config
-C:\Users\T-GAMER\Documents\PROG\ColorHelper\bin\Debug\ColorHelper.exe
-C:\Users\T-GAMER\Documents\PROG\ColorHelper\bin\Debug\ColorHelper.pdb
 C:\Users\T-GAMER\Documents\PROG\ColorHelper\obj\Debug\ColorHelper.exe
 C:\Users\T-GAMER\Documents\PROG\ColorHelper\obj\Debug\ColorHelper.pdb
 C:\Users\T-GAMER\Documents\PROG\ColorHelper\obj\Debug\ColorHelper.exe.config

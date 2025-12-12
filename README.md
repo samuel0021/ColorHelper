@@ -7,7 +7,7 @@ O aplicativo permite escolher cores pelo espectro HSV, editar valores ARGB e cop
 
 1. Baixe a última versão aqui: <br>
 
-➡️ [ColorHelper v1.0.0](https://github.com/samuel0021/ColorHelper/releases/download/v1.0.0/ColorHelper-1.0.0-win-x64.zip)
+➡️ [ColorHelper v1.0.1](https://github.com/samuel0021/ColorHelper/releases/download/v1.0.1/ColorHelper-1.0.1-win-x64.zip)
 
 2. Extraia os arquivos da pasta.  
 3. Execute o arquivo ColorHelper.exe.

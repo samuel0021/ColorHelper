@@ -4,11 +4,13 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Threading;
-using System.Reflection;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace ColorHelper
 {
@@ -28,6 +30,8 @@ namespace ColorHelper
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            txtColor.Text = "#";
+
             pctColorSpectrum.Image = _picker.GerarGradiente(pctColorSpectrum.Width, pctColorSpectrum.Height);
 
             CheckForIllegalCrossThreadCalls = false;
@@ -126,8 +130,18 @@ namespace ColorHelper
 
         private void txtColor_TextChanged(object sender, EventArgs e)
         {
+            if (!txtColor.Text.StartsWith("#"))
+            {
+                int textPosition = txtColor.SelectionStart;
+
+                txtColor.Text = "#" + txtColor.Text.TrimStart('#');
+
+                txtColor.SelectionStart = Math.Max(textPosition, 1);
+                return;
+            }
+
             string hex = txtColor.Text.Trim();
-            if (string.IsNullOrWhiteSpace(hex))
+            if (string.IsNullOrWhiteSpace(hex) || hex == "#")
                 return;
 
             try
@@ -233,5 +247,10 @@ namespace ColorHelper
             Cursor = Cursors.Default;
         }
 
+        private void txtColor_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Back && txtColor.SelectionStart <= 1)
+                e.SuppressKeyPress = true;
+        }
     }
 }

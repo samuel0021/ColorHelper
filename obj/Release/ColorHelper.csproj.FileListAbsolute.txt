@@ -1,0 +1,11 @@
+C:\Users\T-GAMER\Documents\PROG\ColorHelper\bin\Release\ColorHelper.exe.config
+C:\Users\T-GAMER\Documents\PROG\ColorHelper\bin\Release\ColorHelper.exe
+C:\Users\T-GAMER\Documents\PROG\ColorHelper\bin\Release\ColorHelper.pdb
+C:\Users\T-GAMER\Documents\PROG\ColorHelper\obj\Release\ColorHelper.csproj.AssemblyReference.cache
+C:\Users\T-GAMER\Documents\PROG\ColorHelper\obj\Release\ColorHelper.Form1.resources
+C:\Users\T-GAMER\Documents\PROG\ColorHelper\obj\Release\ColorHelper.Properties.Resources.resources
+C:\Users\T-GAMER\Documents\PROG\ColorHelper\obj\Release\ColorHelper.csproj.GenerateResource.cache
+C:\Users\T-GAMER\Documents\PROG\ColorHelper\obj\Release\ColorHelper.csproj.CoreCompileInputs.cache
+C:\Users\T-GAMER\Documents\PROG\ColorHelper\obj\Release\ColorHelper.exe
+C:\Users\T-GAMER\Documents\PROG\ColorHelper\obj\Release\ColorHelper.pdb
+C:\Users\T-GAMER\Documents\PROG\ColorHelper\obj\Release\ColorHelper.exe.config

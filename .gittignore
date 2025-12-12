@@ -7,6 +7,8 @@
 
 ## Pastas do VS
 .vs/
+bin/
+obj/
 
 ## Resultados de build
 [Bb]in/
